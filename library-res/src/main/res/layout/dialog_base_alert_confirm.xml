@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_base_dialog_alert_confirm">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"
+        android:paddingRight="15dp"
+        android:text="这是标题这是标题这是标题这是标题这是标题"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/txtContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:text="这是描述这是描述这是描述这是描述这是描述这是描述这是描述"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        app:layout_goneMarginTop="15dp"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/viewSep"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="20dp"
+        android:background="#dddddd"
+        app:layout_constraintTop_toBottomOf="@+id/txtContent" />
+
+    <TextView
+        android:id="@+id/txtCancel"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/viewSep2"
+        app:layout_constraintTop_toBottomOf="@+id/viewSep" />
+
+    <View
+        android:id="@+id/viewSep2"
+        android:layout_width="1px"
+        android:layout_height="55dp"
+        android:background="#dddddd"
+        app:layout_constraintLeft_toRightOf="@+id/txtCancel"
+        app:layout_constraintRight_toLeftOf="@+id/txtSubmit"
+        app:layout_constraintTop_toBottomOf="@+id/viewSep" />
+
+    <TextView
+        android:id="@+id/txtSubmit"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:text="确认"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/viewSep2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewSep" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

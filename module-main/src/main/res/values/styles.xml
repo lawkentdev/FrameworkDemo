@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="AppTheme.Full" parent="AppTheme.NoTitle">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--StartActivity Style 冷启动效果-->
+    <style name="AppTheme.Splash" parent="AppTheme.NoTitle">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+    <style name="AppTheme.FullSplash" parent="AppTheme.NoTitle">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/layoutBaseStatusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBaseActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/layoutBaseStatusBar"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/imgBaseBack"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:clickable="true"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="16dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_back_white"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/txtBaseBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:clickable="true"
+            android:ellipsize="end"
+            android:foreground="?android:selectableItemBackground"
+            android:gravity="center"
+            android:maxWidth="200dp"
+            android:minWidth="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:text="这个是左边" />
+
+        <TextView
+            android:id="@+id/txtBaseTitle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/txtBaseBack"
+            app:layout_constraintRight_toLeftOf="@+id/txtBaseFunction"
+            app:layout_goneMarginLeft="40dp"
+            app:layout_goneMarginRight="40dp"
+            tools:text="标题" />
+
+        <TextView
+            android:id="@+id/txtBaseFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:ellipsize="end"
+            android:foreground="?android:selectableItemBackground"
+            android:gravity="center"
+            android:maxWidth="200dp"
+            android:minWidth="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="这个是右边" />
+
+        <ImageView
+            android:id="@+id/imgBaseFunction"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:foreground="?android:selectableItemBackground"
+            android:padding="15dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#999999"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

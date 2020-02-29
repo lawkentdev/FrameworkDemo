@@ -1,2 +1,8 @@
 rootProject.name='FrameworkDemo'
 include ':app'
+include ':library-base'
+include ':library-net'
+include ':library-res'
+include ':module-main'
+include ':module-home'
+include ':module-user'

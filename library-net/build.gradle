@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            if (isBuildModule.toBoolean()) {
+            } else {
+                resources {
+                    //正式版本时，排除debug文件夹下所有调试文件
+                    exclude 'src/debug/*'
+                }
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = rootProject.ext.versions["source-compatibility"]
+        targetCompatibility = rootProject.ext.versions["target-compatibility"]
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //公用的support相关库在base中依赖
+    testImplementation rootProject.ext.support["junit"]
+    androidTestImplementation rootProject.ext.support["ext-junit"]
+    androidTestImplementation rootProject.ext.support["espresso-core"]
+    api rootProject.ext.support["appcompat"]
+
+    api project(':library-base')
+    api rootProject.ext.dependencies["retrofit2"]
+    api rootProject.ext.dependencies["retrofit2rxjava"]
+    api rootProject.ext.dependencies["okhttp3logging"]
+    api rootProject.ext.dependencies["retrofit2fastjson"]
+    api rootProject.ext.dependencies["fastjson"]
+    api rootProject.ext.dependencies["rxjava2"]
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api rootProject.ext.dependencies["autodisposeandroid"]
+    api rootProject.ext.dependencies["autodisposearchcomponents"]
+    api rootProject.ext.dependencies["mmkv"]
+    api rootProject.ext.dependencies["blankj-util"]
+}

@@ -1,0 +1,76 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'cn.leo.plugin.magic'//点击防重用
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        multiDexEnabled true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            if (isBuildModule.toBoolean()) {
+            } else {
+                resources {
+                    //正式版本时，排除debug文件夹下所有调试文件
+                    exclude 'src/debug/*'
+                }
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = rootProject.ext.versions["source-compatibility"]
+        targetCompatibility = rootProject.ext.versions["target-compatibility"]
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //公用的support相关库在base中依赖
+    testImplementation rootProject.ext.support["junit"]
+    androidTestImplementation rootProject.ext.support["ext-junit"]
+    androidTestImplementation rootProject.ext.support["espresso-core"]
+    api rootProject.ext.support["appcompat"]
+    api rootProject.ext.support["constraint-layout"]
+    api rootProject.ext.support["recyclerview"]
+    api 'com.android.support:multidex:1.0.1'
+    //公用资源在base中依赖
+    api project(':library-res')
+    //核心基础库(由于这是例子, 所以这里采用远程依赖的方式, 可根据实际情况自行换成源码依赖，源码地址：https://github.com/goldze/MVVMHabit)
+//    api rootProject.ext.dependencies.MVVMHabit
+    //阿里路由框架
+    api rootProject.ext.dependencies["arouter-api"]
+    api rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    api rootProject.ext.dependencies["backgroundLibrary"]
+    api rootProject.ext.dependencies["immersionbar"]
+    api rootProject.ext.dependencies["immersionbar-fragment"]
+    api rootProject.ext.dependencies["soulpermission"]
+    api rootProject.ext.dependencies["blankj-util"]
+    api rootProject.ext.dependencies["mmkv"]
+}
